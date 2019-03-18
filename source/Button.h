@@ -30,7 +30,6 @@ private:
 	int m_height;
 	std::function<void ()> m_onClick;
 	bool m_down;
-	bool m_hover;
 	double m_inversedRatio;
 	std::shared_ptr<AnimationExecutor> m_animationExecutor;
 

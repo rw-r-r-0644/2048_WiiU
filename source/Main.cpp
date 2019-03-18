@@ -72,21 +72,6 @@ int main(int argc, char *argv[])
 				if(e.jbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP) goto quit;
 			} else if(e.type == SDL_QUIT) {
 				goto quit;
-			} else if(e.type == SDL_KEYDOWN) {
-				switch(e.key.keysym.sym) {
-				case SDLK_UP:
-					g.move(UP);
-					break;
-				case SDLK_RIGHT:
-					g.move(RIGHT);
-					break;
-				case SDLK_DOWN:
-					g.move(DOWN);
-					break;
-				case SDLK_LEFT:
-					g.move(LEFT);
-					break;
-				}
 			}
 		}
 

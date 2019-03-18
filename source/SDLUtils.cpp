@@ -5,8 +5,8 @@
 #include <SDL_ttf.h>
 #include "Render.h"
 
-extern const int SCREEN_WIDTH = 1280;
-extern const int SCREEN_HEIGHT = 720;
+const int SCREEN_WIDTH = 1280;
+const int SCREEN_HEIGHT = 720;
 
 static SDL_Window *g_window = NULL;
 static SDL_Renderer *g_renderer = NULL;

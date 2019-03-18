@@ -43,7 +43,6 @@ Button::Button(const char *text, std::function<void ()> onClick)
 	m_width = 120;
 	m_height = 40;
 	m_down = false;
-	m_hover = false;
 	m_inversedRatio = 0.0;
 }
 
@@ -87,32 +86,28 @@ void Button::setProperty(int propertyID, double value)
 
 void Button::handleEvent(const SDL_Event &e)
 {
-	if(e.type == SDL_MOUSEMOTION || e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP) {
-		int x, y;
-		SDL_GetMouseState(&x, &y);
+	if(e.type == SDL_FINGERMOTION || e.type == SDL_FINGERDOWN || e.type == SDL_FINGERUP) {
+		int x = e.tfinger.x * SCREEN_WIDTH;
+		int y = e.tfinger.y * SCREEN_HEIGHT;
 
 		bool inside = isInside(x, y);
 
-		if(e.type == SDL_MOUSEMOTION) {
-			if(!m_hover && inside) {
-				m_hover = true;
+		if(e.type == SDL_FINGERDOWN) {
+			if(inside)
+			{
+				m_down = true;
 				m_animationExecutor = std::make_shared<AnimationExecutor>(buttonFadeInAnim, this);
 				m_animationExecutor->init();
 			}
-			else if(m_hover && !inside) {
-				m_hover = false;
-				m_animationExecutor = std::make_shared<AnimationExecutor>(buttonFadeOutAnim, this);
-				m_animationExecutor->init();
-			}
-		}
-		else if(e.type == SDL_MOUSEBUTTONDOWN) {
-			if(inside)
-				m_down = true;
 		}
 		else if(m_down) {
 			m_down = false;
 			if(inside)
+			{
 				m_onClick();
+				m_animationExecutor = std::make_shared<AnimationExecutor>(buttonFadeOutAnim, this);
+				m_animationExecutor->init();
+			}
 		}
 	}
 }
