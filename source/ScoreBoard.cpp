@@ -7,8 +7,8 @@ ScoreBoard::ScoreBoard(const char *title, int &score)
 	: m_title(title),
 	  m_score(score)
 {
-	m_titleFont.init("ClearSans-Regular.ttf", 14);
-	m_numberFont.init("ClearSans-Bold.ttf", 36);
+	m_titleFont.init(14);
+	m_numberFont.init(36);
 }
 
 void ScoreBoard::render()

@@ -7,7 +7,6 @@
 #include "Game.h"
 #include "Button.h"
 
-#include <romfs-wiiu.h>
 #include <algorithm>
 #include <unistd.h>
 #include <math.h>
@@ -31,9 +30,6 @@ void Frame(int delta_ms)
 
 int main(int argc, char *argv[])
 {
-	romfsInit();
-	chdir("romfs:/");
-
 	if (!InitSDL())
 		return 1;
 
@@ -93,8 +89,6 @@ quit:
 	Tile_UnloadMetaData();
 
 	CloseSDL();
-
-	romfsExit();
 
 	return 0;
 }

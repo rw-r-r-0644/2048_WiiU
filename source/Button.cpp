@@ -11,7 +11,7 @@ const SDL_Color buttonBgColor = { 0x8F, 0x7A, 0x66, 0xFF };
 
 void Button_loadMetaData()
 {
-	buttonFont.init("ClearSans-Bold.ttf", 18);
+	buttonFont.init(18);
 
 	ValueTransition *t;
 

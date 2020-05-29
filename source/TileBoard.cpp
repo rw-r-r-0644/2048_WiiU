@@ -12,7 +12,7 @@ static Texture gameOverText;
 void TileBoard_loadMetaData()
 {
 	Font font;
-	font.init("ClearSans-Bold.ttf", 60);
+	font.init(60);
 	SDL_Color color = { 0x77, 0x6E, 0x65, 0xFF };
 	gameOverText.loadFromLatinText(&font, "Game Over", color);
 	font.free();

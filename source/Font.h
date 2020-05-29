@@ -10,7 +10,7 @@ public:
 	Font() { m_font = NULL; }
 	~Font() { free(); }
 
-	void init(const char *filePath, int size);
+	void init(int fontSize);
 	void free();
 	SDL_Surface *renderLatin(const char *str, SDL_Color fgColor);
 

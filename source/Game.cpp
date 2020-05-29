@@ -19,7 +19,7 @@ Game::~Game()
 void Game::init(int size)
 {
 	Font font;
-	font.init("Bell.ttf", 18);
+	font.init(18);
 	m_copyrightTexture.loadFromLatinText(&font, "(copyleft) kbridge@github 2016", BLACK);
 	font.free();
 

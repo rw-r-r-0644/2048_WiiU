@@ -26,7 +26,7 @@ void ScoreAddition_unloadMetaData()
 ScoreAddition::ScoreAddition(int delta)
 {
 	Font font;
-	font.init("ClearSans-Bold.ttf", 25);
+	font.init(25);
 	std::stringstream ss;
 	ss << '+' << delta;
 	const SDL_Color color = { 119, 110, 101, static_cast<Uint8>(0.9 * 255) };

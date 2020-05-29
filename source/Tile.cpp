@@ -131,11 +131,10 @@ std::shared_ptr<Animation> Tile_makeMoveAnimation(int row1, int col1, int row2, 
 
 void Tile_LoadMetaData()
 {
-	const char *fontPath = "ClearSans-Bold.ttf";
-	numFontLarge.init(fontPath, 55);
-	numFontMedium.init(fontPath, 45);
-	numFontSmall.init(fontPath, 35);
-	numFontXSmall.init(fontPath, 30);
+	numFontLarge.init(55);
+	numFontMedium.init(45);
+	numFontSmall.init(35);
+	numFontXSmall.init(30);
 
 	BuildTileStyles();
 	BuildTileAnimations();

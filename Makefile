@@ -18,20 +18,18 @@ PKGCONF		:=	$(PORTLIBS_PATH)/wiiu/bin/powerpc-eabi-pkg-config
 # BUILD is the directory where object files & intermediate files will be placed
 # SOURCES is a list of directories containing source code
 # INCLUDES is a list of directories containing header files
-# ROMFS is a folder to generate app's romfs
 #-------------------------------------------------------------------------------
 TARGET		:=	2048
 BUILD		:=	build
 SOURCES		:=	source
 INCLUDES	:=	include
-ROMFS		:=	romfs
 LIBRARIES	:=	SDL2_gfx SDL2_image SDL2_mixer SDL2_ttf sdl2 \
 			freetype2 zlib libpng libjpeg
 
 #-------------------------------------------------------------------------------
 # options for code generation
 #-------------------------------------------------------------------------------
-CFLAGS		:=	-g -Wall -O2 -ffunction-sections \
+CFLAGS		:=	-g -O2 -ffunction-sections \
 			$(MACHDEP)
 
 CFLAGS		+=	$(INCLUDE) -D__WIIU__ -D__WUT__
@@ -52,6 +50,7 @@ LIBS		+=	-lwut
 # containing include and lib
 #-------------------------------------------------------------------------------
 LIBDIRS		:=	$(PORTLIBS) $(WUT_ROOT)
+
 
 #-------------------------------------------------------------------------------
 # no real need to edit anything past this point unless you need to add additional
@@ -109,16 +108,6 @@ clean:
 #-------------------------------------------------------------------------------
 else
 .PHONY:	all
-
-#-------------------------------------------------------------------------------
-# romfs
-#-------------------------------------------------------------------------------
-include $(PORTLIBS_PATH)/wiiu/share/romfs-wiiu.mk
-CFLAGS		+=	$(ROMFS_CFLAGS)
-CXXFLAGS	+=	$(ROMFS_CFLAGS)
-LIBS		+=	$(ROMFS_LIBS)
-OFILES		+=	$(ROMFS_TARGET)
-#-------------------------------------------------------------------------------
 
 DEPENDS		:=	$(OFILES:.o=.d)
 
